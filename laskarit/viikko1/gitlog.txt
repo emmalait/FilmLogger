@@ -102,3 +102,6 @@ Date:   Tue Mar 20 18:39:25 2018 +0200
 
  tiedosto.txt | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
+ 
+ 
+ pikku muutos o/
