@@ -1,0 +1,104 @@
+commit 985266a77c552fea5899ad5a7202c3bd9848362c
+Author: Emma Laitinen <emlaitine@gmail.com>
+Date:   Tue Mar 20 19:10:09 2018 +0200
+
+    muutoksia
+
+ tiedostoja/file2.txt                 | 0
+ tiedostoja/{file1.txt => file22.txt} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit f1ee1593350a340022b48f6d3abaa4f5e11e2f1f
+Author: Emma Laitinen <emlaitine@gmail.com>
+Date:   Tue Mar 20 19:07:31 2018 +0200
+
+    lisää tiedostoja
+
+ tiedostoja/file1.txt | 0
+ tiedostoja/file2.txt | 0
+ tiedostoja/file3.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit aa7bcc2b2fe67a4749a9c8a37f2494515cd8887c
+Author: Emma Laitinen <emlaitine@gmail.com>
+Date:   Tue Mar 20 19:03:56 2018 +0200
+
+    muutoksia
+
+ eka.txt    | 4 +++-
+ kolmas.txt | 2 +-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+commit 448d7861675d1014ec3c7ad7809ec07f17e277d4
+Author: Emma Laitinen <emlaitine@gmail.com>
+Date:   Tue Mar 20 19:01:36 2018 +0200
+
+    nimenmuutos
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit b5d69dedab56d648c99d304396ce904573e0ed43
+Author: Emma Laitinen <emlaitine@gmail.com>
+Date:   Tue Mar 20 19:01:01 2018 +0200
+
+    poisto
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 29fe0f2e60130eb43367a580e018a4779ca79efd
+Author: Emma Laitinen <emlaitine@gmail.com>
+Date:   Tue Mar 20 18:58:40 2018 +0200
+
+    lisäys
+
+ tiedosto.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit 8aacec19e4aa4083aedb457bf5f2a6eb4d45cbba
+Author: Emma Laitinen <emlaitine@gmail.com>
+Date:   Tue Mar 20 18:47:46 2018 +0200
+
+    lisäyksiä
+
+ stuff/teksti.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit afebe261f97fb28038c93307c6fb28ba2b2fa043
+Author: Emma Laitinen <emlaitine@gmail.com>
+Date:   Tue Mar 20 18:45:09 2018 +0200
+
+    muokkauksia
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 618e9518f27fc951f265eae7c853af02b6f88787
+Author: Emma Laitinen <emlaitine@gmail.com>
+Date:   Tue Mar 20 18:43:25 2018 +0200
+
+    lisäys
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit e1ebdd00982d7a19842a607df6cb9f3e1682774a
+Author: Emma Laitinen <emlaitine@gmail.com>
+Date:   Tue Mar 20 18:41:44 2018 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit d8c8195e8c22f52a4c3fb14d5c6e7d4f6170ad48
+Author: Emma Laitinen <emlaitine@gmail.com>
+Date:   Tue Mar 20 18:39:25 2018 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
