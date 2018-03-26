@@ -24,7 +24,7 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli *normaali käyttäjä*.
 - Käyttäjä voi logata uuden elokuvan *to watch* -listalle:
   - Käyttäjä syöttää elokuvan nimen ja halutessaan valmistusvuoden.
 - Käyttäjä voi logata elokuvan *seen*-listalle:
-  - Tapaus A: Elokuva löytyy jo *to watch*-listalta.
+  - Tapaus A: Elokuva löytyy jo *to watch* -listalta.
     - Elokuvan voi merkitä nähdyksi valitsemalle sen nimen dropdown-valikosta.
     - Elokuvalle voi syöttää tähtiarvosanan (1-5 tähteä) ja/tai lyhyen (max. 100 sanaa) sanallisen arvostelun.
   - Tapaus B: Elokuva on uusi.
@@ -35,7 +35,7 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli *normaali käyttäjä*.
 
 - Käyttäjä voi pitää kirjaa omistamistaan elokuvista.
 - Käyttäjä voi lisätä nähtyjen elokuvien oheen lisätietoja ajankohdasta, paikasta, elokuvalipun hinnasta tmv.
-- Käyttäjä voi lisätä elokuville tunnisteita, joiden pohjalta pystytään generoimaan listoja. 
+- Käyttäjä voi lisätä elokuville tunnisteita (esim. genre), joiden pohjalta pystytään generoimaan muita listoja/näkymiä. 
 
 ## Käyttöliittymäluonnos
 
