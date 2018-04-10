@@ -1,12 +1,42 @@
-# OTM-harjoitustyö
+# Film Logger
 
-## Harjoitustyö
 
-[FilmLogger](https://github.com/emmalait/otm-harjoitustyo/tree/master/FilmLogger)
 
-## Tehtävät
+## Dokumentaatio
 
-### Viikko 1
-[komentorivi.txt](https://github.com/emmalait/otm-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+Käyttöohje
 
-[gitlog.txt](https://github.com/emmalait/otm-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+[Vaatimusmäärittely](https://github.com/emmalait/otm-harjoitustyo/blob/master/FilmLogger/dokumentaatio/vaatimusmaarittely.md)
+
+Arkkitehtuurikuvaus
+
+Testausdokumentti
+
+[Työaikakirjanpito](https://github.com/emmalait/otm-harjoitustyo/blob/master/FilmLogger/dokumentaatio/tyoaikakirjanpito.md)
+
+## Komentorivitoiminnot
+
+### Ohjelman suorittaminen
+
+Ohjelma voidaan suorittaa komentoriviltä komennolla:
+
+```
+mvn compile exec:java -Dexec.mainClass=filmlogger.ui.Main
+```
+
+
+### Testaus
+
+Testit suoritetaan komennolla:
+
+```
+mvn test
+```
+
+Testikattavuusraportti luodaan komennolla:
+
+```
+mvn jacoco:report
+```
+
+Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto *target/site/jacoco/index.html*
