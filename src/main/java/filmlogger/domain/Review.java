@@ -64,5 +64,15 @@ public class Review {
     public void setReview(String review) {
         this.review = review;
     }
+    
+    public String getStarredRating() {
+        String stars = "";
+        
+        for (int i = 0; i < this.rating; i++) {
+                stars += "*";
+        } 
+        
+        return stars;
+    }
 }
 
