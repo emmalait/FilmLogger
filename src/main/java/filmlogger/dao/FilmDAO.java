@@ -15,27 +15,30 @@ public class FilmDAO implements DAO<Film, Integer> {
 
     @Override
     public void create(Film object) throws SQLException {
-        Connection conn = this.database.getConnection();
-        PreparedStatement stmnt = conn.prepareStatement(
-                "INSERT INTO Film " +
-                        "(name, year) " +
-                        "VALUES (?, ?);"
+        Connection connection = this.database.getConnection();
+        PreparedStatement statement = connection.prepareStatement(
+                "INSERT INTO Film "
+                        + "(name, year) "
+                        + "VALUES (?, ?);"
         );
-        stmnt.setString(1, object.getName());
-        stmnt.setString(2, object.getYear());
-        stmnt.executeUpdate();
+        statement.setString(1, object.getName());
+        statement.setString(2, object.getYear());
+        statement.executeUpdate();
         
-        stmnt.close();
-        conn.close();
+        statement.close();
+        connection.close();
     }
 
     @Override
     public Film find(Integer key) throws SQLException {
-        Connection conn = database.getConnection();
-        PreparedStatement stmnt = conn.prepareStatement("SELECT * FROM Film WHERE id = ?");
-        stmnt.setInt(1, key);
+        Connection connection = database.getConnection();
+        PreparedStatement statement = connection.prepareStatement(
+                "SELECT * FROM Film "
+                        + "WHERE id = ?"
+        );
+        statement.setInt(1, key);
 
-        ResultSet rs = stmnt.executeQuery();
+        ResultSet rs = statement.executeQuery();
         boolean hasOne = rs.next();
         
         if (!hasOne) {
@@ -45,19 +48,22 @@ public class FilmDAO implements DAO<Film, Integer> {
         Film film  = new Film(rs.getInt("id"), rs.getString("name"), rs.getString("year"));
         
         rs.close();
-        stmnt.close();
-        conn.close();
+        statement.close();
+        connection.close();
 
         return film;
     }
     
     @Override
     public Film find(String name) throws SQLException {
-        Connection conn = database.getConnection();
-        PreparedStatement stmnt = conn.prepareStatement("SELECT * FROM Film WHERE name = ?");
-        stmnt.setString(1, name);
+        Connection connection = database.getConnection();
+        PreparedStatement statement = connection.prepareStatement(
+                "SELECT * FROM Film "
+                        + "WHERE name = ?"
+        );
+        statement.setString(1, name);
 
-        ResultSet rs = stmnt.executeQuery();
+        ResultSet rs = statement.executeQuery();
         boolean hasOne = rs.next();
         
         if (!hasOne) {
@@ -67,25 +73,69 @@ public class FilmDAO implements DAO<Film, Integer> {
         Film film  = new Film(rs.getInt("id"), rs.getString("name"), rs.getString("year"));
         
         rs.close();
-        stmnt.close();
-        conn.close();
+        statement.close();
+        connection.close();
 
         return film;
     }
 
     @Override
     public List<Film> findAll() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection connection = this.database.getConnection();
+        PreparedStatement statement = connection.prepareStatement(
+                "SELECT * FROM Film;"
+        );
+        
+        ResultSet rs = statement.executeQuery();
+        
+        List<Film> films = new ArrayList<>();
+        
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String name = rs.getString("name");
+            String year = rs.getString("year");
+            films.add(new Film(id, name, year));
+        }
+        
+        rs.close();
+        statement.close();
+        connection.close();
+        
+        return films;
     }
 
     @Override
     public void update(Film object) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection connection = database.getConnection();
+        PreparedStatement statement = connection.prepareStatement(
+                "UPDATE Film SET "
+                        + "name = ?, "
+                        + "year = ? "
+                        + "WHERE id = ?;"
+        );
+
+        statement.setString(1, object.getName());
+        statement.setString(2, object.getYear());
+        statement.setInt(3, object.getId());
+        statement.executeUpdate();
+
+        statement.close();
+        connection.close();    
     }
 
     @Override
     public void delete(Integer key) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection connection = database.getConnection();
+        PreparedStatement statement = connection.prepareStatement(
+                "DELETE FROM Film "
+                        + "WHERE id = ?;"
+        );
+
+        statement.setInt(1, key);
+        statement.executeUpdate();
+
+        statement.close();
+        connection.close();
     }
     
 }

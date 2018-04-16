@@ -1,3 +1,5 @@
+
+
 package filmlogger.domain;
 
 public class User {

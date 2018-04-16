@@ -4,7 +4,7 @@ package filmlogger.dao;
 import filmlogger.database.*;
 import filmlogger.domain.*;
 import java.sql.*;
-import java.util.List;
+import java.util.*;
 
 public class UserDAO implements DAO<User, Integer> {
     private Database database;
@@ -17,9 +17,9 @@ public class UserDAO implements DAO<User, Integer> {
     public void create(User object) throws SQLException {
         Connection conn = this.database.getConnection();
         PreparedStatement stmnt = conn.prepareStatement(
-                "INSERT INTO User " +
-                        "(name) " +
-                        "VALUES (?);"
+                "INSERT INTO User "
+                        + "(name) "
+                        + "VALUES (?);"
         );
         stmnt.setString(1, object.getName());
         stmnt.executeUpdate();
@@ -30,17 +30,39 @@ public class UserDAO implements DAO<User, Integer> {
 
     @Override
     public User find(Integer key) throws SQLException {
+        Connection connection = database.getConnection();
+        PreparedStatement statement = connection.prepareStatement(
+                "SELECT * FROM User "
+                    + "WHERE id = ?"
+        );
+        statement.setInt(1, key);
+
+        ResultSet rs = statement.executeQuery();
+        boolean hasOne = rs.next();
         
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (!hasOne) {
+            return null;
+        }
+
+        User user  = new User(rs.getInt("id"), rs.getString("name"));
+        
+        rs.close();
+        statement.close();
+        connection.close();
+
+        return user;
     }
     
     @Override
     public User find(String name) throws SQLException {
-        Connection conn = database.getConnection();
-        PreparedStatement stmnt = conn.prepareStatement("SELECT * FROM User WHERE name = ?");
-        stmnt.setString(1, name);
+        Connection connection = database.getConnection();
+        PreparedStatement statement = connection.prepareStatement(
+                "SELECT * FROM User "
+                        + "WHERE name = ?"
+        );
+        statement.setString(1, name);
 
-        ResultSet rs = stmnt.executeQuery();
+        ResultSet rs = statement.executeQuery();
         boolean hasOne = rs.next();
         if (!hasOne) {
             return null;
@@ -49,27 +71,66 @@ public class UserDAO implements DAO<User, Integer> {
         User user  = new User(rs.getInt("id"), rs.getString("name"));
         
         rs.close();
-        stmnt.close();
-        conn.close();
+        statement.close();
+        connection.close();
 
         return user;
     }
 
     @Override
     public List<User> findAll() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection connection = this.database.getConnection();
+        PreparedStatement statement = connection.prepareStatement(
+                "SELECT * FROM User;"
+        );
+        
+        ResultSet rs = statement.executeQuery();
+        
+        List<User> users = new ArrayList<>();
+        
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String name = rs.getString("name");
+            users.add(new User(id, name));
+        }
+        
+        rs.close();
+        statement.close();
+        connection.close();
+        
+        return users;
     }
 
     @Override
     public void update(User object) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection connection = database.getConnection();
+        PreparedStatement statement = connection.prepareStatement(
+                "UPDATE User SET "
+                        + "name = ? "
+                        + "WHERE id = ?;"
+        );
+
+        statement.setString(1, object.getName());
+        statement.setInt(2, object.getId());
+        statement.executeUpdate();
+
+        statement.close();
+        connection.close();
     }
 
     @Override
     public void delete(Integer key) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection connection = database.getConnection();
+        PreparedStatement statement = connection.prepareStatement(
+                "DELETE FROM User "
+                        + "WHERE id = ?;"
+        );
+
+        statement.setInt(1, key);
+        statement.executeUpdate();
+
+        statement.close();
+        connection.close();
     }
 
-    
-    
 }

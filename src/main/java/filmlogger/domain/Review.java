@@ -2,22 +2,23 @@
 package filmlogger.domain;
 
 import java.util.*;
+import java.time.*;
 
 public class Review {
     private Integer id;
     private Integer filmID;
     private Integer userID;
-    private Date date;
+    private LocalDate date;
     private Integer rating;
     private String review;
     
-    public Review(Integer id, Integer userID, Integer filmID, Integer rating) {
+    public Review(Integer id, Integer userID, Integer filmID, LocalDate date, Integer rating, String review) {
         this.id = id;
         this.userID = userID;
         this.filmID = filmID;
-        this.date = null;
+        this.date = date;
         this.rating = rating;
-        this.review = null;
+        this.review = review;
     }
 
     public Integer getId() {
@@ -40,11 +41,11 @@ public class Review {
         this.userID = userID;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -63,6 +64,5 @@ public class Review {
     public void setReview(String review) {
         this.review = review;
     }
-
 }
 
