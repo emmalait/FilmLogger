@@ -8,7 +8,7 @@ Käyttöohje
 
 [Vaatimusmäärittely](https://github.com/emmalait/otm-harjoitustyo/blob/master/FilmLogger/dokumentaatio/vaatimusmaarittely.md)
 
-Arkkitehtuurikuvaus
+[Arkkitehtuurikuvaus] (https://github.com/emmalait/otm-harjoitustyo/blob/master/FilmLogger/dokumentaatio/arkkitehtuuri.md)
 
 Testausdokumentti
 

@@ -26,10 +26,10 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli *normaali käyttäjä*.
 - Käyttäjä voi logata elokuvan *seen*-listalle:
   - Tapaus A: Elokuva löytyy jo *to watch* -listalta.
     - Elokuvan voi merkitä nähdyksi valitsemalle sen nimen dropdown-valikosta.
-    - Elokuvalle voi syöttää tähtiarvosanan (1-5 tähteä) ja/tai lyhyen (max. 100 sanaa) sanallisen arvostelun.
+    - Elokuvalle voi syöttää tähtiarvosanan (1-5 tähteä) ja/tai lyhyen (max. 1000 merkkiä) sanallisen arvostelun.
   - Tapaus B: Elokuva on uusi.
     - Käyttäjä syöttää elokuvan nimen ja halutessaan valmistumisvuoden.
-    - Elokuvalle voi syöttää tähtiarvosanan (1-5 tähteä) ja/tai lyhyen (max. 100 sanaa) sanallisen arvostelun.
+    - Elokuvalle voi syöttää tähtiarvosanan (1-5 tähteä) ja/tai lyhyen (max. 1000 merkkiä) sanallisen arvostelun.
 
 ## Jatkokehitysideat
 
