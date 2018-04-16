@@ -50,4 +50,16 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void delete() throws SQLException{
+        Connection connection = getConnection();
+        PreparedStatement statement = connection.prepareStatement(
+                "DROP DATABASE filmlogger.db;"
+        );
+        
+        statement.executeUpdate();
+        
+        statement.close();
+        connection.close();
+    }
 }
