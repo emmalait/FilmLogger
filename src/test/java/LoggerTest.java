@@ -61,4 +61,24 @@ public class LoggerTest {
         assertEquals("tester", logger.getCurrentUser().getName());
     }
     
+    @Test
+    public void yearCannotBeWrong() throws SQLException {
+        assertFalse(logger.validateYear("12345"));
+    }
+    
+    @Test
+    public void yearCanBeRight() throws SQLException {
+        assertTrue(logger.validateYear("2018"));
+    }
+    
+    @Test
+    public void dateCannotBeWrong() throws SQLException {
+        assertFalse(logger.validateDate("31122017"));
+    }
+    
+    @Test
+    public void dateCanBeRight() throws SQLException {
+        assertTrue(logger.validateDate("31/12/2017"));
+    }
+    
 }

@@ -84,26 +84,5 @@ public class ReviewTest {
         Review review = new Review(1, 2, 3, date, 5, "Ok");
         assertEquals("Ok", review.getReview());
     }
-    
-//    @Test
-//    public void setterSetsIdRight() {
-//        Film film = new Film(123, "Name", "Year");
-//        film.setId(456);
-//        assertEquals((long) 456, (long) film.getId());
-//    }
-//
-//    @Test
-//    public void setterSetsNameRight() {
-//        Film film = new Film(123, "Name", "Year");
-//        film.setName("Kill Bill");
-//        assertEquals("Kill Bill", film.getName());
-//    }
-//    
-//    @Test
-//    public void setterSetsYearRight() {
-//        Film film = new Film(123, "Name", "Year");
-//        film.setYear("2003");
-//        assertEquals("2003", film.getYear());
-//    }
    
 }

@@ -52,7 +52,37 @@ public class Logger {
         return this.loggedInUser;
     }
     
-    public void logFilm(String filmName, String filmYear, String watchDate, Integer filmRating, String filmReview) throws SQLException {
+    public boolean validateYear(String filmYear) {
+        if (filmYear.length() > 4) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean validateDate(String watchDate) {
+        
+        if (watchDate.length() > 10) {
+            return false;
+        } else if (watchDate.charAt(2) != '/' || watchDate.charAt(5) != '/') {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    
+    public boolean logFilm(String filmName, String filmYear, String watchDate, Integer filmRating, String filmReview) throws SQLException {
+        if (!validateYear(filmYear)) {
+            System.out.println("Enter year with 4 digits, e.g. '2018'.");
+            return false;
+        }
+        
+        if (!validateDate(watchDate)) {
+            System.out.println("Enter date as dd/mm/yyyy.");
+            return false;
+        }
+        
         if (films.find(filmName) == null) {
             Film film = new Film(null, filmName, filmYear);
             films.create(film);                    
@@ -65,6 +95,8 @@ public class Logger {
 
         Review review = new Review(null, this.loggedInUser.getId(), film.getId(), date, filmRating, filmReview);
         reviews.create(review);
+        
+        return true;
     }
     
     public void printLoggedFilms() throws SQLException {
