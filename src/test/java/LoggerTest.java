@@ -1,6 +1,6 @@
 
 import filmlogger.dao.*;
-import filmlogger.database.Database;
+import filmlogger.dao.Database;
 import filmlogger.domain.*;
 import java.sql.SQLException;
 import org.junit.After;
@@ -11,20 +11,21 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class LoggerTest {
-    UserDAO users;
-    FilmDAO films;
-    ReviewDAO reviews;
-    TagDAO tags;
+    DbUserDAO users;
+    DbFilmDAO films;
+    DbReviewDAO reviews;
+    DbTagDAO tags;
     Logger logger;
     Database db;
     
     @Before
     public void setUp() throws SQLException {
         db = new Database();
-        users = new UserDAO(db);
-        films = new FilmDAO(db);
-        reviews = new ReviewDAO(db);
-        tags = new TagDAO(db);
+        users = new DbUserDAO(db);
+        films = new DbFilmDAO(db);
+        
+        tags = new DbTagDAO(db);
+        reviews = new DbReviewDAO(db, users, films, tags);
         logger = new Logger(users, films, reviews, tags);
         
         users.create(new User(null, "tester"));

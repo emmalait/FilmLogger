@@ -32,57 +32,8 @@ public class ReviewTest {
     }
 
     @Test
-    public void constructorSetsIdRight() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate date = LocalDate.parse("12/12/2017", formatter);
+    public void test() {
         
-        Review review = new Review(1, 2, 3, date, 5, "Ok");
-        assertEquals((long) 1, (long) review.getId());
-    }
-    
-    @Test
-    public void constructorSetsUserIdRight() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate date = LocalDate.parse("12/12/2017", formatter);
-        
-        Review review = new Review(1, 2, 3, date, 5, "Ok");
-        assertEquals((long) 2, (long) review.getUserID());
-    }
-    
-    @Test
-    public void constructorSetsFilmIdRight() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate date = LocalDate.parse("12/12/2017", formatter);
-        
-        Review review = new Review(1, 2, 3, date, 5, "Ok");
-        assertEquals((long) 3, (long) review.getFilmID());
-    }
-    
-    @Test
-    public void constructorSetsDateRight() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate date = LocalDate.parse("12/12/2017", formatter);
-        
-        Review review = new Review(1, 2, 3, date, 5, "Ok");
-        assertEquals("12/12/2017", review.getDate().format(formatter));
-    }
-    
-    @Test
-    public void constructorSetsRatingRight() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate date = LocalDate.parse("12/12/2017", formatter);
-        
-        Review review = new Review(1, 2, 3, date, 5, "Ok");
-        assertEquals((long) 5, (long) review.getRating());
-    }
-    
-    @Test
-    public void constructorSetsReviewRight() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate date = LocalDate.parse("12/12/2017", formatter);
-        
-        Review review = new Review(1, 2, 3, date, 5, "Ok");
-        assertEquals("Ok", review.getReview());
     }
    
 }

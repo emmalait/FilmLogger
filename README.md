@@ -1,7 +1,5 @@
 # Film Logger
 
-
-
 ## Dokumentaatio
 
 Käyttöohje
@@ -21,7 +19,7 @@ Testausdokumentti
 Ohjelma voidaan suorittaa komentoriviltä komennolla:
 
 ```
-mvn compile exec:java -Dexec.mainClass=filmlogger.ui.Main
+mvn compile exec:java -Dexec.mainClass=filmlogger.ui.LoggerUI
 ```
 
 

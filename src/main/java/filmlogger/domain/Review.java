@@ -6,16 +6,18 @@ import java.time.*;
 
 public class Review {
     private Integer id;
-    private Integer filmID;
-    private Integer userID;
+    private User user;
+    private Film film;
+    private Tag tag;
     private LocalDate date;
     private Integer rating;
     private String review;
     
-    public Review(Integer id, Integer userID, Integer filmID, LocalDate date, Integer rating, String review) {
+    public Review(Integer id, User user, Film film, Tag tag, LocalDate date, Integer rating, String review) {
         this.id = id;
-        this.userID = userID;
-        this.filmID = filmID;
+        this.user = user;
+        this.film = film;
+        this.tag = tag;
         this.date = date;
         this.rating = rating;
         this.review = review;
@@ -25,20 +27,28 @@ public class Review {
         return id;
     }
 
-    public Integer getFilmID() {
-        return filmID;
+    public User getUser() {
+        return user;
     }
 
-    public void setFilmID(Integer filmID) {
-        this.filmID = filmID;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Integer getUserID() {
-        return userID;
+    public Film getFilm() {
+        return film;
     }
 
-    public void setUserID(Integer userID) {
-        this.userID = userID;
+    public void setFilm(Film film) {
+        this.film = film;
+    }
+
+    public Tag getTag() {
+        return tag;
+    }
+
+    public void setTag(Tag tag) {
+        this.tag = tag;
     }
 
     public LocalDate getDate() {
