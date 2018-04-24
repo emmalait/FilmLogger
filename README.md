@@ -12,6 +12,9 @@ Testausdokumentti
 
 [Työaikakirjanpito](https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 
+## Releaset
+[Viikko 5](https://github.com/emmalait/FilmLogger/releases/tag/viikko5)
+
 ## Komentorivitoiminnot
 
 ### Ohjelman suorittaminen
