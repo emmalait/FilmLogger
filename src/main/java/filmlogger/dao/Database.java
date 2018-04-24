@@ -1,5 +1,5 @@
 
-package filmlogger.database;
+package filmlogger.dao;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -10,6 +10,7 @@ public class Database {
     
     public Database() {
         this.createTables();
+        this.createTags();
     }
 
     public Connection getConnection() throws SQLException {
@@ -32,17 +33,19 @@ public class Database {
             
             statement.execute("CREATE TABLE IF NOT EXISTS Tag ("
                     + "id integer PRIMARY KEY, "
-                    + "name varchar(20));");
+                    + "name varchar(20) UNIQUE);");
             
             statement.execute("CREATE TABLE IF NOT EXISTS Review ("
                     + "id integer PRIMARY KEY, "
                     + "user_id integer, "
                     + "film_id integer, "
+                    + "tag_id integer, "
                     + "date date, "
                     + "rating integer, "
                     + "review varchar(1000), "
                     + "FOREIGN KEY(user_id) REFERENCES User(id), "
-                    + "FOREIGN KEY(film_id) REFERENCES Film(id));");
+                    + "FOREIGN KEY(film_id) REFERENCES Film(id),"
+                    + "FOREIGN KEY(tag_id) REFERENCES Tag(id));");
             
             statement.close();
             connection.close();       
@@ -51,15 +54,44 @@ public class Database {
         }
     }
     
-    public void delete() throws SQLException{
-        Connection connection = getConnection();
-        PreparedStatement statement = connection.prepareStatement(
-                "DROP DATABASE filmlogger.db;"
-        );
-        
-        statement.executeUpdate();
-        
-        statement.close();
-        connection.close();
+    public void createTags(){              
+        try {
+            Connection connection = getConnection();
+            
+            PreparedStatement statement = connection.prepareStatement(
+                    "INSERT INTO Tag "
+                            + "(name) "
+                            + "VALUES (?);"
+            );
+            
+            statement.setString(1, "toWatch");
+            statement.executeUpdate();
+            
+            statement = connection.prepareStatement(
+                    "INSERT INTO Tag "
+                            + "(name) "
+                            + "VALUES (?);"
+            );
+            
+            statement.setString(1, "seen");
+            statement.executeUpdate();
+            
+            statement.close();
+            connection.close();
+        } catch (SQLException ex) {
+            
+        }
     }
+    
+//    public void delete() throws SQLException{
+//        Connection connection = getConnection();
+//        PreparedStatement statement = connection.prepareStatement(
+//                "DROP DATABASE filmlogger.db;"
+//        );
+//        
+//        statement.executeUpdate();
+//        
+//        statement.close();
+//        connection.close();
+//    }
 }
