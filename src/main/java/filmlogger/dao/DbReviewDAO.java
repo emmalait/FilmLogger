@@ -27,10 +27,10 @@ public class DbReviewDAO implements ReviewDAO<Review, Integer> {
                         + "(user_id, film_id, tag_id, date, rating, review) "
                         + "VALUES (?, ?, ?, ?, ?, ?);"
         );
+        
         statement.setInt(1, object.getUser().getId());
         statement.setInt(2, object.getFilm().getId());
         statement.setInt(3, object.getTag().getId());
-        
         
         if (object.getDate() == null) {
             statement.setDate(4, null);
@@ -42,18 +42,18 @@ public class DbReviewDAO implements ReviewDAO<Review, Integer> {
         statement.setString(6, object.getReview());
         
         statement.executeUpdate();
-        
         statement.close();
         connection.close();
     }
 
     @Override
     public Review findById(Integer key) throws SQLException {
-    Connection connection = database.getConnection();
+        Connection connection = database.getConnection();
         PreparedStatement statement = connection.prepareStatement(
                 "SELECT * FROM Review "
                         + "WHERE id = ?"
         );
+        
         statement.setInt(1, key);
 
         ResultSet rs = statement.executeQuery();
@@ -74,7 +74,7 @@ public class DbReviewDAO implements ReviewDAO<Review, Integer> {
     
     @Override
     public Review findByUserAndFilm(User user, Film film) throws SQLException {
-    Connection connection = database.getConnection();
+        Connection connection = database.getConnection();
         PreparedStatement statement = connection.prepareStatement(
                 "SELECT * FROM Review "
                         + "WHERE user_id = ?"

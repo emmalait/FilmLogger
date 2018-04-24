@@ -79,7 +79,7 @@ public class Review {
         String stars = "";
         
         for (int i = 0; i < this.rating; i++) {
-                stars += "*";
+            stars += "*";
         } 
         
         return stars;

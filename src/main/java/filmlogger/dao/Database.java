@@ -50,23 +50,22 @@ public class Database {
             statement.close();
             connection.close();       
         } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }
     
-    public void createTags(){              
+    public void createTags() {              
         try {
             Connection connection = getConnection();
-            
             PreparedStatement statement = connection.prepareStatement(
                     "INSERT INTO Tag "
                             + "(name) "
                             + "VALUES (?);"
             );
-            
+      
             statement.setString(1, "toWatch");
             statement.executeUpdate();
-            
+
             statement = connection.prepareStatement(
                     "INSERT INTO Tag "
                             + "(name) "
@@ -75,23 +74,11 @@ public class Database {
             
             statement.setString(1, "seen");
             statement.executeUpdate();
-            
             statement.close();
             connection.close();
         } catch (SQLException ex) {
             
         }
     }
-    
-//    public void delete() throws SQLException{
-//        Connection connection = getConnection();
-//        PreparedStatement statement = connection.prepareStatement(
-//                "DROP DATABASE filmlogger.db;"
-//        );
-//        
-//        statement.executeUpdate();
-//        
-//        statement.close();
-//        connection.close();
-//    }
+   
 }

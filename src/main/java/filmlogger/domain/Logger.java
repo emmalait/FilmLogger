@@ -24,7 +24,7 @@ public class Logger {
     public boolean login(String username) {
         try {
             User user = users.findByUsername(username);
-            if(user == null) {
+            if (user == null) {
                 System.out.println("Username not found!");
                 return false;
             } else {
@@ -36,9 +36,7 @@ public class Logger {
         }
     }
     
-    
-    
-    public void markAsSeen(Review review){
+    public void markAsSeen(Review review) {
         try {
             reviews.markAsSeen(review);
         } catch (SQLException ex) {
@@ -96,7 +94,6 @@ public class Logger {
             users.create(new User(null, username));
             return true;
         }
- 
     }
     
     public User getCurrentUser() {
