@@ -20,16 +20,16 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli *normaali käyttäjä*.
 
 ### Kirjautumisen jälkeen
 
-- Käyttäjä näkee *seen* ja *to watch* -listat logaamistaan elokuvista.
+- Käyttäjä pääsee katsomaan *to watch* ja *seen* -listat logaamistaan elokuvista.
 - Käyttäjä voi logata uuden elokuvan *to watch* -listalle:
-  - Käyttäjä syöttää elokuvan nimen ja halutessaan valmistusvuoden.
+  - Käyttäjä syöttää elokuvan nimen ja valmistusvuoden.
 - Käyttäjä voi logata elokuvan *seen*-listalle:
   - Tapaus A: Elokuva löytyy jo *to watch* -listalta.
-    - Elokuvan voi merkitä nähdyksi valitsemalle sen nimen dropdown-valikosta.
-    - Elokuvalle voi syöttää tähtiarvosanan (1-5 tähteä) ja/tai lyhyen (max. 1000 merkkiä) sanallisen arvostelun.
+    - Käyttäjä syöttää elokuvan nimen.
+    - Elokuvalle voi syöttää arvosanan (1-5) ja lyhyen (max. 1000 merkkiä) sanallisen arvostelun.
   - Tapaus B: Elokuva on uusi.
-    - Käyttäjä syöttää elokuvan nimen ja halutessaan valmistumisvuoden.
-    - Elokuvalle voi syöttää tähtiarvosanan (1-5 tähteä) ja/tai lyhyen (max. 1000 merkkiä) sanallisen arvostelun.
+    - Käyttäjä syöttää elokuvan nimen ja valmistumisvuoden.
+    - Elokuvalle voi syöttää arvosanan (1-5) ja lyhyen (max. 1000 merkkiä) sanallisen arvostelun.
 
 ## Jatkokehitysideat
 
