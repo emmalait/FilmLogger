@@ -80,9 +80,7 @@ public class LoggerUI {
                                     System.out.println("Oops, that was not an option, try again!");
                                 }
                             }
-                        } else if (command.equals("2")) {
-                            
-                                
+                        } else if (command.equals("2")) {                            
                             while (true) {
                                 System.out.println("");
                                 System.out.println("SEEN FILMS");
@@ -151,8 +149,7 @@ public class LoggerUI {
                 break;
             } else {
                 System.out.println("Oops, that was not an option, try again!");
-            }
-            
+            }  
         } 
     }  
 }
