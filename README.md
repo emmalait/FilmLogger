@@ -2,13 +2,13 @@
 
 ## Dokumentaatio
 
-Käyttöohje
+[Käyttöohje](https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/kayttoohje.md)
 
 [Vaatimusmäärittely](https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [Arkkitehtuurikuvaus](https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/arkkitehtuuri.md)
 
-Testausdokumentti
+[Testausdokumentti](https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/testaus.md)
 
 [Työaikakirjanpito](https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 
@@ -27,7 +27,6 @@ mvn compile exec:java -Dexec.mainClass=filmlogger.ui.LoggerUI
 
 
 ### Testaus
-
 Testit suoritetaan komennolla:
 
 ```
@@ -41,6 +40,24 @@ mvn jacoco:report
 ```
 
 Kattavuusraporttia voi tarkastella avaamalla selaimessa tiedoston *target/site/jacoco/index.html*.
+
+### Suoritettavan jarin generointi
+Suoritettava jar generoidaan komennolla:
+
+```
+mvn package
+```
+
+Suoritettava jar-tiedosto generoituu polkuun *target/FilmLogger-1.0-SNAPSHOT.jar*.
+
+### JavaDoc
+JavaDoc generoidaan komennolla:
+
+```
+mvn javadoc:javadoc
+```
+
+JavaDocia voi tarkastella avaamalla selaimessa tiedoston *target/site/apidocs/index.html*.
 
 ### Checkstyle
 Tiedostoon [checkstyle.xml](https://github.com/emmalait/FilmLogger/blob/master/checkstyle.xml) määritellyt tarkistukset suoritetaan komennolla:
