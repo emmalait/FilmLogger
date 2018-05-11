@@ -36,6 +36,7 @@ Kirjautuminen tapahtuu klikkaamalla Login-painiketta.
 ## Elokuvan lisääminen watchlistille
 
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/logger1.png?raw=true">
+
 Ohjelma avaa logger-näkymän. Käyttäjä voi lisätä watchlistille elokuvan syöttämällä sen tiedot alareunassa näkyviin kenttiin ja klikkaamalla Add film -painiketta.
 
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/logger2.png?raw=true">
