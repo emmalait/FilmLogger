@@ -23,20 +23,13 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli *normaali käyttäjä*.
 - Käyttäjä pääsee katsomaan *to watch* ja *seen* -listat logaamistaan elokuvista.
 - Käyttäjä voi logata uuden elokuvan *to watch* -listalle:
   - Käyttäjä syöttää elokuvan nimen ja valmistusvuoden.
-- Käyttäjä voi logata elokuvan *seen*-listalle:
-  - Tapaus A: Elokuva löytyy jo *to watch* -listalta.
-    - Käyttäjä syöttää elokuvan nimen.
-    - Elokuvalle voi syöttää arvosanan (1-5) ja lyhyen (max. 1000 merkkiä) sanallisen arvostelun.
-  - Tapaus B: Elokuva on uusi.
-    - Käyttäjä syöttää elokuvan nimen ja valmistumisvuoden.
-    - Elokuvalle voi syöttää arvosanan (1-5) ja lyhyen (max. 1000 merkkiä) sanallisen arvostelun.
+- Käyttäjä voi merkitä watchlistille logaamansa elokuvan nähdyksi, jolloin se näkyy *seen*-listalla.
+- Käyttäjä voi lisätä näkemälleen elokuvalleen arvion, joka sisältää katselupäivämäärän, numeerisen arvion asteikolla 1-5 ja sanallisen arvion.
 
 ## Jatkokehitysideat
 
+- Käyttäjä voi poistaa elokuvia watchlistiltä vaikka ei olisikaan katsonut niitä.
+- Käyttäjä voi lisätä samasta elokuvasta useampia arvioita.
 - Käyttäjä voi pitää kirjaa omistamistaan elokuvista.
-- Käyttäjä voi lisätä nähtyjen elokuvien oheen lisätietoja ajankohdasta, paikasta, elokuvalipun hinnasta tmv.
+- Käyttäjä voi lisätä nähtyjen elokuvien oheen lisätietoja katselupaikasta, elokuvalipun hinnasta tmv.
 - Käyttäjä voi lisätä elokuville tunnisteita (esim. genre), joiden pohjalta pystytään generoimaan muita listoja/näkymiä. 
-
-## Käyttöliittymäluonnos
-
-*TBA*
