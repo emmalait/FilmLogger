@@ -48,12 +48,16 @@ Ohjelma käyttää tietojen tallentamiseen SQL-tietokantaa. Tietokanta tauluinee
 Seuraavassa kuvataan ohjelman keskeisimpiä toiminnallisuuksia.
 
 ### Uuden käyttäjän luominen
+<img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/DiagramRegister.png?raw=true">
 
 ### Kirjautuminen
+<img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/DiagramLogin.png?raw=true">
 
 ### Elokuvan lisääminen watchlistille
-<img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/sk-addToWatchlist.png?raw=true">
+<img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/DiagramAddToWatchlist.png?raw=true">
 
 ### Elokuvan merkitseminen nähdyksi
+<img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/DiagramAddToSeen.png?raw=true">
 
 ### Elokuvalle arvion lisääminen
+<img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/DiagramAddReview.png?raw=true">
