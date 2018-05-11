@@ -3,9 +3,8 @@
 ## Rakenne
 Ohjelma on jaettu kolmeen pakkaukseen:
 
-- filmlogger.ui
-- filmlogger.domain
-- filmlogger.dao
+
+<img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/pakkaukset.png?raw=true" width="200">
 
 Pakkaus **filmlogger.ui** pitää sisällään JavaFX:llä toteutetun käyttöliittymän ja siihen liittyvät FXML Controller -luokat. Pakkaus **filmlogger.domain** sisältää sovelluslogiikasta vastaavat luokat ja pakkaus **filmlogger.dao** puolestaan sisältää tiedon tallentamiseen ja hakemiseen liittyvät luokat.
 
@@ -33,7 +32,7 @@ Ohjelman toiminnallisuudesta vastaa keskeisesti *Logger*-olion ohjelmakohtainen 
 
 Loggerilla on pääsy käyttäjiin, elokuviin, arvioihin ja tunnisteisiin filmlogger.dao-pakkauksessa DAO-rajapinnat toteuttavien luokkien kautta. Sovelluslogiikka eli Logger-instanssi saa tiedon luokista konstruktorinsa kautta. Loggerin suhdetta tallennuksesta vastaaviin luokkiin kuvataan alla olevassa kuvassa.
 
-<img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/pakkausluokkakaavio.png?raw=true">
+<img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/pakkauskaavio.png?raw=true" width="650">
 
 ## Tietojen pysyväistallennus
 
