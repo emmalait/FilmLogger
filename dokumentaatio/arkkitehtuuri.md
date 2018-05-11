@@ -65,7 +65,9 @@ Kun käyttäjä syöttää logger-näkymässä elokuvan nimen ja vuoden ja klikk
 
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/DiagramAddToWatchlist.png?raw=true">
 
-Käyttöliittymän näkymästä vastaava Controller-luokka (LoggerSceneController) kutsuu Logger-instanssin metodia findByName, joka tarkistaa FilmDAO:n avulla tietokannasta löytyykö elokuva sieltä jo. Kun elokuvaa ei löydy, palauttaa se Loggerille arvon null. Tämän jälkeen Logger kutsuu FilmDAO:n create-metodia, joka lisää elokuvan tietokantaan. Seuraavaksi Logger kutsuu TagDAO:n 
+Käyttöliittymän näkymästä vastaava Controller-luokka (LoggerSceneController) kutsuu Logger-instanssin metodia findByName, joka tarkistaa FilmDAO:n avulla tietokannasta löytyykö elokuva sieltä jo. Kun elokuvaa ei löydy, palauttaa se Loggerille arvon null. Tämän jälkeen Logger kutsuu FilmDAO:n create-metodia, joka lisää elokuvan tietokantaan. Seuraavaksi Logger kutsuu TagDAO:n metodia getToWatch(), joka palauttaa "to watch"-tagin. Tämän jälkeen Logger kutsuu ReviewDAO:n create-metodia, joka lisää uuden Reviewn tietokantaan. Koska kyseessä on elokuva, jota käyttäjä ei ole vielä nähnyt, jätetään katselupäivämäärä, numeerinen arvio ja sanallinen arvio toistaiseksi tyhjiksi.
+
+Lisäysoperaation jälkeen käyttöliittymän watchlist-näkymä päivitetään heijastamaan muuttunutta tilannetta.
 
 ### Elokuvan merkitseminen nähdyksi
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/DiagramAddToSeen.png?raw=true">
