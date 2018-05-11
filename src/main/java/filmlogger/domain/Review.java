@@ -4,7 +4,7 @@ package filmlogger.domain;
 import java.util.*;
 import java.time.*;
 
-public class Review {
+public class Review implements Comparable {
     private Integer id;
     private User user;
     private Film film;
@@ -31,16 +31,8 @@ public class Review {
         return user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public Film getFilm() {
         return film;
-    }
-
-    public void setFilm(Film film) {
-        this.film = film;
     }
 
     public Tag getTag() {
@@ -74,15 +66,10 @@ public class Review {
     public void setReview(String review) {
         this.review = review;
     }
-    
-    public String getStarredRating() {
-        String stars = "";
-        
-        for (int i = 0; i < this.rating; i++) {
-            stars += "*";
-        } 
-        
-        return stars;
+
+    @Override
+    public int compareTo(Object o) {
+        return this.getFilm().getName().compareTo(((Review) o).getFilm().getName());
     }
 }
 

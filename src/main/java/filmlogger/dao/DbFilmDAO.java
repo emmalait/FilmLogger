@@ -3,15 +3,31 @@ package filmlogger.dao;
 
 import filmlogger.domain.*;
 import java.sql.*;
-import java.util.*;
 
-public class DbFilmDAO implements FilmDAO<Film, Integer> {
+/**
+ * Class implements the FilmDAO interface and handles saving to and retrieving information from the Film table in the database.
+ * 
+ * @author emmalait
+ */
+
+public class DbFilmDAO implements FilmDAO {
     private Database database;
+    
+    /**
+     * Constructor of the class, which sets the database accessed by it.
+     * @param database 
+     */
     
     public DbFilmDAO(Database database) {
         this.database = database;
     }
 
+    /**
+     * Method creates a new Film instance in the database.
+     * @param object 
+     * @throws SQLException 
+     */
+    
     @Override
     public void create(Film object) throws SQLException {
         Connection connection = this.database.getConnection();
@@ -28,6 +44,14 @@ public class DbFilmDAO implements FilmDAO<Film, Integer> {
         statement.close();
         connection.close();
     }
+    
+    /**
+     * Method retrieves a film from the database based on its id.
+     * 
+     * @param key
+     * @return Film
+     * @throws SQLException 
+     */
     
     @Override
     public Film findById(Integer key) throws SQLException {
@@ -53,65 +77,13 @@ public class DbFilmDAO implements FilmDAO<Film, Integer> {
 
         return film;
     }
-
-    @Override
-    public List<Film> findAll() throws SQLException {
-        Connection connection = this.database.getConnection();
-        PreparedStatement statement = connection.prepareStatement(
-                "SELECT * FROM Film;"
-        );
-        
-        ResultSet rs = statement.executeQuery();
-        
-        List<Film> films = new ArrayList<>();
-        
-        while (rs.next()) {
-            int id = rs.getInt("id");
-            String name = rs.getString("name");
-            String year = rs.getString("year");
-            films.add(new Film(id, name, year));
-        }
-        
-        rs.close();
-        statement.close();
-        connection.close();
-        
-        return films;
-    }
-
-    @Override
-    public void update(Film object) throws SQLException {
-        Connection connection = database.getConnection();
-        PreparedStatement statement = connection.prepareStatement(
-                "UPDATE Film SET "
-                        + "name = ?, "
-                        + "year = ? "
-                        + "WHERE id = ?;"
-        );
-
-        statement.setString(1, object.getName());
-        statement.setString(2, object.getYear());
-        statement.setInt(3, object.getId());
-        statement.executeUpdate();
-
-        statement.close();
-        connection.close();    
-    }
-
-    @Override
-    public void delete(Integer key) throws SQLException {
-        Connection connection = database.getConnection();
-        PreparedStatement statement = connection.prepareStatement(
-                "DELETE FROM Film "
-                        + "WHERE id = ?;"
-        );
-
-        statement.setInt(1, key);
-        statement.executeUpdate();
-
-        statement.close();
-        connection.close();
-    }
+    
+    /**
+     * Method retrieves a film from the database based on its name.
+     * @param name
+     * @return Film
+     * @throws SQLException 
+     */
     
     @Override
     public Film findByName(String name) throws SQLException {

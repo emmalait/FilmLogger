@@ -10,7 +10,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-    
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -70,7 +69,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>filmlogger.ui.LoggerUI</mainClass>
+                                    <mainClass>filmlogger.ui.LoggerAppMain</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

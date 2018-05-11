@@ -4,223 +4,206 @@ package filmlogger.domain;
 import filmlogger.dao.*;
 import java.sql.*;
 import java.util.*;
-import java.time.*;
-import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
 
 public class Logger {
-    private DbUserDAO users;
-    private DbFilmDAO films;
-    private DbReviewDAO reviews;
-    private DbTagDAO tags;
-    private User loggedInUser;
+    private UserDAO users;
+    private FilmDAO films;
+    private ReviewDAO reviews;
+    private TagDAO tags;
+    public User loggedInUser;
 
-    public Logger(DbUserDAO users, DbFilmDAO films, DbReviewDAO reviews, DbTagDAO tags) {
+    public Logger(UserDAO users, FilmDAO films, ReviewDAO reviews, TagDAO tags) {
         this.users = users;
         this.films = films;
         this.reviews = reviews;
         this.tags = tags;
+        this.loggedInUser = null;
     }
+    
+    /**
+     * Method checks whether the username exists in the database. 
+     * 
+     * @param   username    
+     * @return  true if username exists, false if username does not exist
+     */
     
     public boolean login(String username) {
         try {
             User user = users.findByUsername(username);
             if (user == null) {
-                System.out.println("Username not found!");
                 return false;
             } else {
-                loggedInUser = user;
+                this.loggedInUser = user;
                 return true;
             }
         } catch (SQLException ex) {
+            System.out.println(ex);
             return false;
         }
     }
     
-    public void markAsSeen(Review review) {
-        try {
-            reviews.markAsSeen(review);
-        } catch (SQLException ex) {
-            
-        }
-    }
-    
-    public boolean isToWatch(Film film) throws SQLException {
-        if (reviews.findByUserAndFilm(loggedInUser, film) == null) {
-            return false;
-        } else if (reviews.findByUserAndFilm(loggedInUser, film).getTag().getName().equals("toWatch")) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
-    public boolean isSeen(Film film) throws SQLException {
-        if (reviews.findByUserAndFilm(loggedInUser, film) == null) {
-            return false;
-        } else if (reviews.findByUserAndFilm(loggedInUser, film).getTag().getName().equals("seen")) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
-    public boolean hasRating(Review review) {
-        if (review.getReview() == null) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-    
-    public User findUserByUsername(String username) {
-        try {
-            return users.findByUsername(username);
-        } catch (SQLException ex) {
-            return null;
-        } 
-    }
-    
-    public boolean createUser(String username)  throws SQLException {
-        if (users.findByUsername(username) != null) {
-            System.out.println("Sorry, username is already taken!");
-            return false;
-        } else if (username.length() < 5) {
-            System.out.println("Username is too short!");
-            return false;
-        } else if (username.length() > 15) {
-            System.out.println("Username is too long!");
-            return false;
-        } else {
-            users.create(new User(null, username));
-            return true;
-        }
-    }
+    /**
+     * Method returns the logged-in user.
+     * 
+     * @return logged-in user
+     */
     
     public User getCurrentUser() {
         return this.loggedInUser;
     }
     
-    public boolean validateYear(String filmYear) {
-        if (filmYear.length() > 4) {
-            return false;
-        } else {
-            return true;
+    /**
+     * Method logs out the current user.
+     */
+    
+    public void logout() {
+        this.loggedInUser = null;
+    }
+    
+    /**
+     * Method creates a new user and returns an error message if creation was not successful.
+     * 
+     * @param username
+     * @return error message
+     */
+    
+    public String createUser(String user, String username) {
+        try {
+            if (users.findByUsername(username) != null) {
+                return "Sorry, username is already taken!";
+            } else if (username.length() < 5) {
+                return "Username is too short!";
+            } else if (username.length() > 15) {
+                return "Username is too long!";
+            } else {
+                users.create(new User(null, user, username));
+                return "Registration successful!";  
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return "Something went wrong :(";
         }
     }
     
-    public boolean validateDate(String watchDate) {
-        if (watchDate.length() > 10) {
-            return false;
-        } else if (watchDate.charAt(2) != '/' || watchDate.charAt(5) != '/') {
-            return false;
-        } else {
-            return true;
+    /**
+     * Method returns a list of film on the logged-in user's watchlist.
+     * 
+     * @return list of films on the logged-in user's watchlist
+     */
+    
+    public List<Review> getWatchlist() {
+        try {
+            return reviews.findAllToWatchByUser(this.loggedInUser);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return null;
         }
     }
     
-    public Film findFilm(String filmName) throws SQLException {
-        Film found = films.findByName(filmName);
-        
-        if (found == null) {
-            return null;                    
-        }
-        
-        return found;
-    }
+    /**
+     * Method adds a film to the logged-in user's watchlist.
+     * 
+     * @param filmName
+     * @param filmYear 
+     * @return error message
+     * @throws SQLException 
+     */
     
-    public boolean addFilm(String filmName, String filmYear) throws SQLException {
+    public String addToWatchlist(String filmName, String filmYear) throws SQLException {
         if (!validateYear(filmYear)) {
-            System.out.println("Enter year with 4 digits, e.g. '2018'.");
-            return false;
+            return "Enter year with 4 digits, e.g. '2018'.";
         }
-        
-        if (films.findByName(filmName) == null) {
-            Film film = new Film(null, filmName, filmYear);
-            films.create(film);                    
-        }
-        
-        return true;
-    }
 
-    
-    public boolean addToWatchlist(String filmName, String filmYear) throws SQLException {
-        if (!validateYear(filmYear)) {
-            System.out.println("Enter year with 4 digits, e.g. '2018'.");
-            return false;
-        }
-       
         if (films.findByName(filmName) == null) {
             Film film = new Film(null, filmName, filmYear);
             films.create(film);                    
         }
-        
+
         Film film = films.findByName(filmName);
-        
+
         if (reviews.findByUserAndFilm(loggedInUser, film) != null) {
-            System.out.println("You've already reviewed this film! You can only add new films to the watchlist.");
-            return false;
+            return "You've already reviewed this film! \n You can only add new films to the watchlist.";
         }
 
         Review review = new Review(null, loggedInUser, film, tags.getToWatch(), null, -1, null);
         reviews.create(review);
-        
-        return true;
+
+        return "";
     }
     
-    public List<Review> getFilmsToWatch() {
-        List<Review> filmsToWatch = new ArrayList<>();
-        
+    /**
+     * Method validates that the year input is valid, i.e. contains 4 numbers.
+     * 
+     * @param filmYear
+     * @return true is year is valid, false if invalid
+     */
+    
+    public boolean validateYear(String filmYear) {
+        if (filmYear.matches("[0-9]+") && filmYear.length() == 4) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Method marks the film as seen.
+     * 
+     * @param review
+     */
+    
+    public void markAsSeen(Review review) {
         try {
-            filmsToWatch = reviews.findAllToWatchByUser(loggedInUser);
+            review.setTag(tags.findByName("seen"));
+            reviews.update(review);
         } catch (SQLException ex) {
             
         }
-        
-        return filmsToWatch;
     }
     
-    public void printWatchlist() throws SQLException {
-        List<Review> allToWatch = getFilmsToWatch();
-        
-        for (Review review : allToWatch) {
-            System.out.println(films.findById(review.getFilm().getId()));
+    /**
+     * Method returns a list of the film the logged-in user has logged as seen.
+     * 
+     * @return list of the film the logged-in user has logged as seen
+     */
+    
+    public List<Review> getSeen() {
+        try {
+            return reviews.findAllSeenByUser(this.loggedInUser);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return null;
         }
     }
     
-    public boolean addToSeen(Film film, String watchDate, Integer filmRating, String filmReview) throws SQLException {
-        if (!validateDate(watchDate)) {
-            System.out.println("Enter date as dd/mm/yyyy.");
-            return false;
+    /**
+     * Method finds the logged-in user's review of a film.
+     * 
+     * @param film the film the review of which is searched for
+     * @return the logged-in user's review of the film 
+     */
+    
+    public Review getReview(Film film) {
+        try {
+            return reviews.findByUserAndFilm(loggedInUser, film);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return null;
         }
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate date = LocalDate.parse(watchDate, formatter);
-        
-        if (films.findByName(film.getName()) == null) {
-            film = new Film(null, film.getName(), film.getYear());
-            films.create(film);  
-        }
-        
-        Review review = reviews.findByUserAndFilm(loggedInUser, film);
-        
-        if (review == null) {
-            review = new Review(null, loggedInUser, film, tags.getSeen(), date, filmRating, filmReview);
-            reviews.create(review);
-        } else {
-            reviews.addReview(review, date, filmRating, filmReview);
-        }
-
-        return true;
     }
     
-    public void printSeen() throws SQLException {
-        List<Review> allReviews = reviews.findAllSeenByUser(this.loggedInUser);
-        
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                            
-        for (Review review : allReviews) {
-            System.out.println(films.findById(review.getFilm().getId()) + " ~ " + review.getDate().format(formatter) + " ~ " + review.getStarredRating());
-            System.out.println("Review: " + review.getReview());
+    /**
+     * Method updates a review.
+     * 
+     * @param review the review being updated
+     */
+    
+    public void updateReview(Review review) {
+        try {
+            reviews.update(review);
+        } catch (SQLException ex) {
+            System.out.println(ex);
         }
     }
     
