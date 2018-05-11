@@ -16,7 +16,6 @@ Ohjelman testauksen rivikattavuus on 84% ja haarautumiskattavuus 76%. Käyttöli
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/testaus.png?raw=true">
 
 ## Järjestelmätestaus
-
 Ohjelman järjestelmätestaus on toteutettu manuaalisesti.
 
 ### Asennus
