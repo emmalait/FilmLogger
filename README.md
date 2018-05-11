@@ -14,7 +14,7 @@
 
 ## Releaset
 [Viikko 5](https://github.com/emmalait/FilmLogger/releases/tag/viikko5)
-[Loppupalautus(https://github.com/emmalait/FilmLogger/releases/tag/loppupalautus)
+[Loppupalautus](https://github.com/emmalait/FilmLogger/releases/tag/loppupalautus)
 
 ## Komentorivitoiminnot
 
@@ -42,8 +42,8 @@ mvn jacoco:report
 
 Kattavuusraporttia voi tarkastella avaamalla selaimessa tiedoston *target/site/jacoco/index.html*.
 
-### Suoritettavan jarin generointi
-Suoritettava jar generoidaan komennolla:
+### Suoritettavan jar-tiedoston generointi
+Suoritettava jar-tiedosto generoidaan komennolla:
 
 ```
 mvn package
