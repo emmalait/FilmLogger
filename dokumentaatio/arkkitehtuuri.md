@@ -70,7 +70,17 @@ Käyttöliittymän näkymästä vastaava Controller-luokka (LoggerSceneControlle
 Lisäysoperaation jälkeen käyttöliittymän watchlist-näkymä päivitetään heijastamaan muuttunutta tilannetta.
 
 ### Elokuvan merkitseminen nähdyksi
+Kun käyttäjä klikkaa logger-näkymän watchlist-välilehdessä olevan elokuvan vieressä olevaa markAsSeen-painiketta, toimii ohjelma seuraavasti:
+
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/DiagramAddToSeen.png?raw=true">
 
+Käyttöliittymän näkymästä vastaava Controller-luokka (LoggerSceneController) kutsuu Logger-instanssin metodia markAsSeen. Logger kutsuu ensin TagDAO:n findByName-metodia, joka palauttaa "seen"-tagin. Tämän jälkeen Logger kutsuu käsiteltävän Review'n setTag-metodia ja asettaa sille "seen"-tagin. Seuraavaksi Logger-instanssi kutsuu ReviewDAO:n update-metodia, jonka avulla tieto päivitetään tietokantaan. 
+
+Muutosperaation jälkeen käyttöliittymän watchlist- ja seen-näkymät päivitetään heijastamaan muuttunutta tilannetta.
+
 ### Elokuvalle arvion lisääminen
+Kun käyttäjä klikkaa logger-näkymän seen-välilehdessä elokuvan nimen vieressä olevaa reviewButton-painiketta, toimii ohjelma seuraavasti: 
+
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/DiagramAddReview.png?raw=true">
+
+Ensin käyttöliittymään vaihdetaan arvionäkymä. Arvionäkymässä käyttäjä syöttää katselupäivämäärän, numeerisen arvion (1-5) ja sanallisen arvion. Kun käyttäjä klikkaa addReviewButton-painiketta, käyttöliittymän Controller-luokka (ReviewSceneController) kutsuu käsiteltävän review-olion metodeja setDate, setRating ja setReview, jotka lisäävät oliolle käyttäjän syöttämät tiedot. Tämän jälkeen Controller-luokka kutsuu Loggerin updateReview-metodia ja Logger päivittää muuttuneet tiedot ReviewDAO:n avulla tietokantaan. Lopuksi käyttöliittymään palautetaan logger-näkymä.
