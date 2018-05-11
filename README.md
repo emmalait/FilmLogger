@@ -22,7 +22,7 @@
 Ohjelma voidaan suorittaa komentoriviltä komennolla:
 
 ```
-mvn compile exec:java -Dexec.mainClass=filmlogger.ui.LoggerUI
+mvn compile exec:java -Dexec.mainClass=filmlogger.ui.LoggerAppMain
 ```
 
 
