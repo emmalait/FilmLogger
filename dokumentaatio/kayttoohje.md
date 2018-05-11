@@ -30,11 +30,11 @@ java -jar filmlogger.jar
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/logger3.png?raw=true">
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/logger4.png?raw=true">
 
-## Arvion lisääminen elokuvalle
+## Arvion lisääminen ja muokkaaminen elokuvalle
 
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/review1.png?raw=true">
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/review2.png?raw=true">
-
+<img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/logger5.png?raw=true">
 
 ## Uloskirjautuminen
 
