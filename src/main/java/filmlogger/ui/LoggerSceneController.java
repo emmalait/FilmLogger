@@ -28,7 +28,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 /**
- * FXML Controller class
+ * FXML Controller class for LoggerScene
  *
  * @author emmalait
  */
@@ -37,9 +37,21 @@ public class LoggerSceneController implements Initializable {
     private Logger logger;
     private LoggerAppMain application;
     
+    /**
+     * Method sets up the logger.
+     * 
+     * @param logger 
+     */
+    
     public void setLogger(Logger logger) {
         this.logger = logger;
     }
+    
+    /**
+     * Method sets up the application.
+     * 
+     * @param application 
+     */
     
     public void setApplication(LoggerAppMain application) {
         this.application = application;
@@ -75,10 +87,18 @@ public class LoggerSceneController implements Initializable {
     @FXML
     private VBox seenBox;
     
+    /**
+     * Method sets up the logged-in user information in the UI.
+     */
+    
     public void setLoggedInUserText() {
         User user = logger.getCurrentUser();
         loggedInUserText.setText(user.getName() + " (" + user.getUsername() + ")");
     }
+    
+    /**
+     * Method loads the watchlist.
+     */
     
     public void setWatchlist() {
         watchlistBox.getChildren().clear();
@@ -113,6 +133,10 @@ public class LoggerSceneController implements Initializable {
         container.getChildren().addAll(film, region, markAsSeenButton);
         return container;
     } 
+    
+    /**
+     * Method loads the seen list.
+     */
     
     public void setSeen() {
         seenBox.getChildren().clear();
@@ -161,7 +185,7 @@ public class LoggerSceneController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO  
     }
-    
+
     @FXML
     private void handleLogoutButton() {
         logger.logout();

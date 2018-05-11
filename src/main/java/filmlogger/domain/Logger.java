@@ -4,7 +4,12 @@ package filmlogger.domain;
 import filmlogger.dao.*;
 import java.sql.*;
 import java.util.*;
-import java.util.logging.Level;
+
+/**
+ * Class responsible for application logic. 
+ * 
+ * @author emmalait
+ */
 
 public class Logger {
     private UserDAO users;
@@ -12,6 +17,15 @@ public class Logger {
     private ReviewDAO reviews;
     private TagDAO tags;
     public User loggedInUser;
+    
+    /**
+     * Constructor of the class sets the UserDAO, FilmDAO, ReviewDAO and TagDAO used by the instance. 
+     * 
+     * @param users
+     * @param films
+     * @param reviews
+     * @param tags 
+     */
 
     public Logger(UserDAO users, FilmDAO films, ReviewDAO reviews, TagDAO tags) {
         this.users = users;

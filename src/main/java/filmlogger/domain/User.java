@@ -2,6 +2,12 @@
 
 package filmlogger.domain;
 
+/**
+ * Class responsible for user functionality.
+ * 
+ * @author emmalait
+ */
+
 public class User {
     private Integer id;
     private String name;

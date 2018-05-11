@@ -167,7 +167,7 @@ public class DbReviewDAO implements ReviewDAO {
      * Method retrieves all reviews with the tagged with "to watch" by the user from the database.
      * 
      * @param user
-     * @return
+     * @return list of reviews
      * @throws SQLException 
      */
 
@@ -212,7 +212,7 @@ public class DbReviewDAO implements ReviewDAO {
      * Method retrieves all reviews with the tagged with "seen" by the user from the database.
      * 
      * @param user
-     * @return
+     * @return list of reviews
      * @throws SQLException 
      */
     

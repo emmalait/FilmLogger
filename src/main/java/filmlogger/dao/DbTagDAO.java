@@ -4,13 +4,32 @@ package filmlogger.dao;
 import filmlogger.domain.*;
 import java.sql.*;
 
+/**
+ * Class implements the TagDAO interface and handles saving to and retrieving information from the Tag table in the database.
+ * 
+ * @author emmalait
+ */
+
 public class DbTagDAO implements TagDAO {
     private Database database;
+    
+    /**
+     * Constructor of the class, which sets the database accessed by it.
+     * 
+     * @param database 
+     */
     
     public DbTagDAO(Database database) {
         this.database = database;
     }
 
+    /**
+     * Method creates a new Tag instance in the database.
+     * 
+     * @param object
+     * @throws SQLException 
+     */
+    
     @Override
     public void create(Tag object) throws SQLException {
         Connection connection = this.database.getConnection();
@@ -28,6 +47,14 @@ public class DbTagDAO implements TagDAO {
         connection.close();
     }
 
+    /**
+     * Method retrieves a tag from the database based on its id.
+     * 
+     * @param key
+     * @return Tag
+     * @throws SQLException 
+     */
+    
     @Override
     public Tag findById(Integer key) throws SQLException {
         Connection connection = database.getConnection();
@@ -53,6 +80,14 @@ public class DbTagDAO implements TagDAO {
         return tag;
     }
     
+    /**
+     * Method retrieves a tag from the database based on its name.
+     * 
+     * @param name
+     * @return Tag
+     * @throws SQLException 
+     */
+    
     @Override
     public Tag findByName(String name) throws SQLException {
         Connection connection = database.getConnection();
@@ -77,66 +112,24 @@ public class DbTagDAO implements TagDAO {
         return tag;
     }
 
-//    @Override
-//    public List<Tag> findAll() throws SQLException {
-//        Connection connection = this.database.getConnection();
-//        PreparedStatement statement = connection.prepareStatement(
-//                "SELECT * FROM Tag;"
-//        );
-//        
-//        ResultSet rs = statement.executeQuery();
-//        
-//        List<Tag> tags = new ArrayList<>();
-//        
-//        while (rs.next()) {
-//            int id = rs.getInt("id");
-//            String name = rs.getString("name");
-//            tags.add(new Tag(id, name));
-//        }
-//        
-//        rs.close();
-//        statement.close();
-//        connection.close();
-//        
-//        return tags;
-//    }
-//
-//    @Override
-//    public void update(Tag object) throws SQLException {
-//        Connection connection = database.getConnection();
-//        PreparedStatement statement = connection.prepareStatement(
-//                "UPDATE Tag SET "
-//                        + "name = ? "
-//                        + "WHERE id = ?;"
-//        );
-//
-//        statement.setString(1, object.getName());
-//        statement.setInt(2, object.getId());
-//        statement.executeUpdate();
-//
-//        statement.close();
-//        connection.close();
-//    }
-//
-//    @Override
-//    public void delete(Integer key) throws SQLException {
-//        Connection connection = database.getConnection();
-//        PreparedStatement statement = connection.prepareStatement(
-//                "DELETE FROM Tag "
-//                        + "WHERE id = ?;"
-//        );
-//
-//        statement.setInt(1, key);
-//        statement.executeUpdate();
-//
-//        statement.close();
-//        connection.close();
-//    }
+    /**
+     * Method retrieves the "to watch" tag.
+     * 
+     * @return "to watch" tag
+     * @throws SQLException 
+     */
 
     @Override
     public Tag getToWatch() throws SQLException {
         return findByName("toWatch");
     }
+    
+    /**
+     * Method retrieves the "seen" tag.
+     * 
+     * @return "seen" tag
+     * @throws SQLException 
+     */
 
     @Override
     public Tag getSeen() throws SQLException {

@@ -3,14 +3,32 @@ package filmlogger.dao;
 
 import filmlogger.domain.*;
 import java.sql.*;
-import java.util.*;
+
+/**
+ * Class implements the UserDAO interface and handles saving to and retrieving information from the User table in the database.
+ * 
+ * @author emmalait
+ */
 
 public class DbUserDAO implements UserDAO {
     private Database database;
     
+    /**
+     * Constructor of the class, which sets the database accessed by it.
+     * 
+     * @param database 
+     */
+    
     public DbUserDAO(Database database) {
         this.database = database;
     }
+    
+    /**
+     * Method creates a new Review instance in the database.
+     * 
+     * @param object
+     * @throws SQLException 
+     */
 
     @Override
     public void create(User object) throws SQLException {
@@ -29,6 +47,14 @@ public class DbUserDAO implements UserDAO {
         conn.close();
     }
 
+    /**
+     * Method retrieves a user from the database based on its id.
+     * 
+     * @param key
+     * @return User
+     * @throws SQLException 
+     */
+    
     @Override
     public User findById(Integer key) throws SQLException {
         Connection connection = database.getConnection();
@@ -54,6 +80,14 @@ public class DbUserDAO implements UserDAO {
         return user;
     }
     
+    /**
+     * Method retrieves a user from the database based on its username.
+     * 
+     * @param username
+     * @return User
+     * @throws SQLException 
+     */
+    
     @Override
     public User findByUsername(String username) throws SQLException {
         Connection connection = database.getConnection();
@@ -77,60 +111,5 @@ public class DbUserDAO implements UserDAO {
 
         return user;
     }
-
-//    @Override
-//    public List<User> findAll() throws SQLException {
-//        Connection connection = this.database.getConnection();
-//        PreparedStatement statement = connection.prepareStatement(
-//                "SELECT * FROM User;"
-//        );
-//        
-//        ResultSet rs = statement.executeQuery();
-//        List<User> users = new ArrayList<>();
-//        
-//        while (rs.next()) {
-//            users.add(new User(rs.getInt("id"), rs.getString("name"), rs.getString("username")));
-//        }
-//        
-//        rs.close();
-//        statement.close();
-//        connection.close();
-//        
-//        return users;
-//    }
-//
-//    @Override
-//    public void update(User object) throws SQLException {
-//        Connection connection = database.getConnection();
-//        PreparedStatement statement = connection.prepareStatement(
-//                "UPDATE User SET "
-//                        + "name = ? "
-//                        + "username = ? "
-//                        + "WHERE id = ?;"
-//        );
-//
-//        statement.setString(1, object.getName());
-//        statement.setString(2, object.getUsername());
-//        statement.setInt(3, object.getId());
-//        statement.executeUpdate();
-//
-//        statement.close();
-//        connection.close();
-//    }
-//
-//    @Override
-//    public void delete(Integer key) throws SQLException {
-//        Connection connection = database.getConnection();
-//        PreparedStatement statement = connection.prepareStatement(
-//                "DELETE FROM User "
-//                        + "WHERE id = ?;"
-//        );
-//
-//        statement.setInt(1, key);
-//        statement.executeUpdate();
-//
-//        statement.close();
-//        connection.close();
-//    }
 
 }

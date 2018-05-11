@@ -1,6 +1,12 @@
 
 package filmlogger.domain;
 
+/**
+ * Class responsible for tag functionality.
+ * 
+ * @author emmalait
+ */
+
 public class Tag {
     private Integer id;
     private String name;

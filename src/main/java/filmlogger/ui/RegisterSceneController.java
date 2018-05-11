@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 /**
- * FXML Controller class
+ * FXML Controller class for RegisterScene
  *
  * @author emmalait
  */
@@ -24,9 +24,21 @@ public class RegisterSceneController implements Initializable {
     private Logger logger;
     private LoggerAppMain application;
     
+    /**
+     * Method sets up the logger.
+     * 
+     * @param logger 
+     */
+    
     public void setLogger(Logger logger) {
         this.logger = logger;
     }
+    
+    /**
+     * Method sets up the application.
+     * 
+     * @param application 
+     */
     
     public void setApplication(LoggerAppMain application) {
         this.application = application;

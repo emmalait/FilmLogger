@@ -1,5 +1,11 @@
 package filmlogger.domain;
 
+/**
+ * Class responsible for film functionality.
+ * 
+ * @author emmalait
+ */
+
 public class Film {
     private Integer id;
     private String name;
@@ -27,11 +33,14 @@ public class Film {
         return year;
     }
 
+    /**
+     * Method returns Film's toString in format "Film (YYYY)".
+     * @return 
+     */
+    
     @Override
     public String toString() {
         return name + " (" + year + ')';
     }
-    
-    
-    
+
 }

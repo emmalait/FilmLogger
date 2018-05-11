@@ -1,8 +1,13 @@
 
 package filmlogger.domain;
 
-import java.util.*;
 import java.time.*;
+
+/**
+ * Class responsible for review functionality.
+ * 
+ * @author emmalait
+ */
 
 public class Review implements Comparable {
     private Integer id;
@@ -66,6 +71,13 @@ public class Review implements Comparable {
     public void setReview(String review) {
         this.review = review;
     }
+    
+    /**
+     * Method sorts reviews in alphabetical order based on the name of the film associated with the review.
+     * 
+     * @param o
+     * @return 
+     */
 
     @Override
     public int compareTo(Object o) {

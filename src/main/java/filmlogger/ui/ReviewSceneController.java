@@ -20,7 +20,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 
 /**
- * FXML Controller class
+ * FXML Controller class for ReviewScene
  *
  * @author emmalait
  */
@@ -29,9 +29,21 @@ public class ReviewSceneController implements Initializable {
     private LoggerAppMain application;
     private Review review;
     
+    /**
+     * Method sets up the logger.
+     * 
+     * @param logger 
+     */
+    
     public void setLogger(Logger logger) {
         this.logger = logger;
     }
+    
+    /**
+     * Method sets up the application.
+     * 
+     * @param application 
+     */
     
     public void setApplication(LoggerAppMain application) {
         this.application = application;

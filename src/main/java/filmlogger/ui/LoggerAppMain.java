@@ -7,6 +7,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.stage.*;
 
+/**
+ * Class responsible for initialising the application and starting the UI.
+ * 
+ * @author emmalait
+ */
+
 public class LoggerAppMain extends Application {
     private Stage stage;
     private Logger logger;
@@ -17,6 +23,12 @@ public class LoggerAppMain extends Application {
     private LoggerSceneController loggerSceneController;
     private ReviewSceneController reviewSceneController;
 
+    /**
+     * Initialises the database, DAOs and the different scenes.
+     * 
+     * @throws Exception 
+     */
+    
     @Override
     public void init() throws Exception {
         Database db = new Database("jdbc:sqlite:filmlogger.db");
@@ -57,6 +69,13 @@ public class LoggerAppMain extends Application {
         reviewScene = new Scene(reviewPane);
     }
     
+    /**
+     * Sets up the first stage.
+     * 
+     * @param stage
+     * @throws Exception 
+     */
+    
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
@@ -66,13 +85,25 @@ public class LoggerAppMain extends Application {
         stage.show(); 
     }
     
+    /**
+     * Sets up the LoginScene.
+     */
+    
     public void setLoginScene() {
         stage.setScene(loginScene);
     }
     
+    /**
+     * Sets up the RegisterScene.
+     */
+    
     public void setRegisterScene() {
         stage.setScene(registerScene);
     }
+    
+    /**
+     * Sets up the LoggerScene.
+     */
     
     public void setLoggerScene() {
         loggerSceneController.setLoggedInUserText();
@@ -81,6 +112,12 @@ public class LoggerAppMain extends Application {
         
         stage.setScene(loggerScene);
     }
+    
+    /**
+     * Sets up the ReviewScene.
+     *
+     * @param review 
+     */
     
     public void setReviewScene(Review review) {
         reviewSceneController.setReview(review);
