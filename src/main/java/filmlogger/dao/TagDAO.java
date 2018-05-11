@@ -9,7 +9,7 @@ import java.sql.SQLException;
  * @author emmalait
  */
 
-public interface TagDAO{
+public interface TagDAO {
     void create(Tag object) throws SQLException;
     Tag findById(Integer key) throws SQLException;
     Tag findByName(String name) throws SQLException;
