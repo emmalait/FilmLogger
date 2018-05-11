@@ -22,7 +22,7 @@ Ohjelman sovelluslogiikka on pyritty erottamaan käyttöliittymästä ja käytt�
 ## Sovelluslogiikka
 Sovelluksen loogisen datamallin muodostavat luokat User, Film, Tag ja Review, jotka kuvaavat käyttäjien ja elokuvien välisiä suhteita:
 
-<img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/luokat.png?raw=true" width ="600">
+<img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/luokat1.png?raw=true" width ="600">
 
 Ohjelman toiminnallisuudesta vastaa keskeisesti *Logger*-olion ohjelmakohtainen instanssi, joka tarjoaa käyttöliittymän toiminnoille metodit kuten esim.:
 - boolean login(String username)
