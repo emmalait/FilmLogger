@@ -47,13 +47,25 @@ Ohjelma käyttää tietojen tallentamiseen SQL-tietokantaa. Tietokanta tauluinee
 Seuraavassa kuvataan ohjelman keskeisimpiä toiminnallisuuksia.
 
 ### Uuden käyttäjän luominen
+Kun rekisteröitymisnäkymässä käyttäjä on syöttänyt käyttäjätunnuksen ja nimen ja klikkaa painiketta registerInputButton, toimii ohjelma seuraavasti:
+
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/DiagramRegister.png?raw=true">
 
+Käyttöliittymän näkymästä vastaava Controller-luokka (RegisterSceneController) kutsuu Logger-instanssin createUser-metodia. Logger-instanssi tarkistaa UserDAO:n kautta tietokannasta onko käyttäjätunnusta olemassa ja palauttaa null kun käyttäjää ei löydy. Tämän jälkeen Logger luo UserDAO:n kautta tietokantaan uuden käyttäjän ja Logger palauttaa käyttöliittymään viestin, että käyttäjän luonti onnistui.
+
 ### Kirjautuminen
+Kun kirjautumisnäkymässä käyttäjä syöttää käyttäjätunnuksensa ja klikkaa loginButton-painiketta, toimii ohjelma seuraavasti:
+
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/DiagramLogin.png?raw=true">
 
+Käyttöliittymän näkymästä vastaava Controller-luokka (LoginSceneController) kutsuu Logger-instanssin login-metodia. Logger tarkistaa UserDAO:n kautta löytyykö käyttäjä tietokannasta. UserDAO palauttaa Loggerille käyttäjän ja Logger palauttaa Controllerille true. Tämän jälkeen käyttöliittymään vaihdetaan seuraava näkymä.
+
 ### Elokuvan lisääminen watchlistille
+Kun käyttäjä syöttää logger-näkymässä elokuvan nimen ja vuoden ja klikkaa addToWatchlistButton-painiketta, toimii ohjelma seuraavasti:
+
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/DiagramAddToWatchlist.png?raw=true">
+
+Käyttöliittymän näkymästä vastaava Controller-luokka (LoggerSceneController) kutsuu Logger-instanssin metodia findByName, joka tarkistaa FilmDAO:n avulla tietokannasta löytyykö elokuva sieltä jo. Kun elokuvaa ei löydy, palauttaa se Loggerille arvon null. Tämän jälkeen Logger kutsuu FilmDAO:n create-metodia, joka lisää elokuvan tietokantaan. Seuraavaksi Logger kutsuu TagDAO:n 
 
 ### Elokuvan merkitseminen nähdyksi
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/DiagramAddToSeen.png?raw=true">
