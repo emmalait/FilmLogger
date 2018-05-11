@@ -23,7 +23,7 @@ Ohjelman sovelluslogiikka on pyritty erottamaan käyttöliittymästä ja käytt�
 ## Sovelluslogiikka
 Sovelluksen loogisen datamallin muodostavat luokat User, Film, Tag ja Review, jotka kuvaavat käyttäjien ja elokuvien välisiä suhteita:
 
-Ohjelman toiminnallisuudesta vastaa keskeisesti Logger-olion ohjelmakohtainen instanssi, joka tarjoaa käyttöliittymän toiminnoille metodit kuten esim.:
+Ohjelman toiminnallisuudesta vastaa keskeisesti *Logger*-olion ohjelmakohtainen instanssi, joka tarjoaa käyttöliittymän toiminnoille metodit kuten esim.:
 - boolean login(String username)
 - User getCurrentUser()
 - void logout()
@@ -31,13 +31,19 @@ Ohjelman toiminnallisuudesta vastaa keskeisesti Logger-olion ohjelmakohtainen in
 - List<Review> getWatchlist()
 - String addToWatchlist(String filmName, String filmYear)
 
+Loggerilla on pääsy käyttäjiin, elokuviin, arvioihin ja tunnisteisiin filmlogger.dao-pakkauksessa DAO-rajapinnat toteuttavien luokkien kautta. Sovelluslogiikka eli Logger-instanssi saa tiedon luokista konstruktorinsa kautta. Loggerin suhdetta tallennuksesta vastaaviin luokkiin kuvataan alla olevassa kuvassa.
 
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/pakkausluokkakaavio.png?raw=true">
+
+## Tietojen pysyväistallennus
+
+Ohjelma käyttää tietojen tallentamiseen SQL-tietokantaa. Tietojen tallennuksesta tietokantaan ja hakemisesta tietokannasta vastaavat filmlogger.dao-pakkauksen luokat DbUserDAO, DbFilmDAO, DbTagDAO ja DbReviewDAO. Luokat noudattavat Data Access Object -suunnittelumallia ja kaikki luokat toteuttavat niitä vastaavan rajapinnan. Sovelluslogiikka ei näin ollen ole suoraan yhteydessä tallennuksesta vastaaviin luokkiin ja tallennuksen toteutus voidaan tarvittaessa muuttaa jos tietoa halutaankin tallentaa toisessa muodossa. 
 
 ## Päätoiminnallisuudet
 
 ### Elokuvan lisääminen watchlistille
 <img src="https://github.com/emmalait/FilmLogger/blob/master/dokumentaatio/images/sk-addToWatchlist.png?raw=true">
 
+### Elokuvan merkitseminen nähdyksi
 
-
+### Elokuvalle arvion lisääminen
